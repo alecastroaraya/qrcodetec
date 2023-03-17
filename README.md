@@ -56,7 +56,7 @@ QRCodeTEC es un proyecto web. Su primera version esta en el proceso de desarroll
 Colaboradores:
 - [AP y developer: Tania Maria Sanchez Irola](https://www.linkedin.com/in/tania-mar%C3%ADa-s%C3%A1nchez-irola-27b63715a/)
 - [TL y developer: Luis Diego Mora Aguilar](https://www.linkedin.com/in/luis-diego-mora-aguilar-741741145/)
-- [Junior developer:](linkedin.com/in/alejandro-castro-b899a826a)
+- [Junior developer: Alejandro Castro Araya](linkedin.com/in/alejandro-castro-b899a826a)
 - [a](https://www.linkedin.com)
 - [a](https://www.linkedin.com)
 
