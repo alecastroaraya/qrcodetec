@@ -26,8 +26,11 @@ export default function Home() {
         </nav>
       </div>
 
-      <div className="container-lg">
-      <p className="text-center text-info"><h1><u>Generador de códigos QR</u></h1></p>
+      <div className="container-lg position-absolute top-25">
+        <br/>
+        <br/>
+        <br/>
+        <p className="text-center text-info"><h1><u>Generador de códigos QR</u></h1></p>
         <div className="card">
 
           <div className="row-sm bg-info">
