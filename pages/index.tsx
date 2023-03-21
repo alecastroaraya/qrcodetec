@@ -14,137 +14,132 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="" />
       </Head>
-
-      <main className={styles.main}>
-
-      <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-white border-top border-dark border-bottom border-dark border-left border-dark border-right border-dark">
-            <a href="/" className="navbar-brand">
-              <Image src="/iei_logo.jpg" width={100} height={100} alt="" className="d-inline-block align-middle mr-2"/>
-              <a className="navbar-brand" href="/"><b>       Instituto de Educación Integral</b></a>
-            </a>
-        </nav>
+<div className="ui fixed borderless huge menu">
+  
+    
+      <div className="item">
+        <img className= "ui tiny image" src="/iei_logo.jpg"/>
       </div>
+      <a className="header item"><h1>Instituto de Educación Integral</h1></a>
 
-      <div className="container-lg position-absolute top-25">
-        <br/>
-        <br/>
-        <br/>
-        <p className="home_text text-center text-primary"><h1><u>Generador de códigos QR</u></h1></p>
-        <div className="card border-top border-primary border-bottom border-primary border-left border-primary border-right border-primary rounded">
+</div>
 
-          <div className="row-sm bg-primary">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div className="ui container">
+  <center><h1 className="ui header header-text"><u>Generador de códigos</u></h1></center>
+</div>
 
-            <div className="container-md">
-              <div className="col-md d-flex p-2 justify-content-center">
-                  <p className="text-center text-white"><h3>Nombre de la página</h3></p>
-              </div>
-            </div>
-          </div>
+<br/>
+<div className="ui container border-1">
+  <div className="ui container fluid">
+    <center>
+    <div className="ui inverted segment">
+    <h2>Nombre de la página</h2>
+    </div>
+    </center>
+  </div>
 
-          <div className="row">
-            <div className="col-1">
+  <div className="ui vertically divided bottom aligned grid">
+  <div className="four column row">
+    <div className="one wide column">
 
-              <div className="d-flex p-2 justify-content-end">
-                <button className="btn text-right">
-                  <img src="/search-icon.png" width="40" />
-                </button>
-              </div>
-            </div>
+    </div>
+    <div className="one wide column">
+      <button className="ui icon button">
+      <img className= "ui mini image" src="/search-icon.png"/>
+      </button>
+    </div>
 
-            <div className="col-10">
+    <div className="eleven wide column go-bottom">
+      <div className="ui fluid large icon input">
+      <input type="text" placeholder="Buscar códigos QR"/>
+      </div>
+    </div>
 
-              <div className="container-fluid">
-                <form method="GET" className="d-flex p-2 justify-content-between">
-                <input id="search" className="form-control me-2 input-large" type="search" placeholder="Buscar página" aria-label="Search" />
-                </form>
-              </div>
+    <div className="one wide column">
+      <button className="ui medium button">
+      <h3>Registrar</h3>
+      </button>
+    </div>
+  </div>
 
-            </div>
-            
-            <div className="col-1">
+  <div className="four column row">
+    <div className="one wide column">
 
-            <div className="d-flex p-2 justify-content-end">
-              <button className="btn btn-lg btn-primary text-white">Registrar</button>
-            </div>
+    </div>
 
-            </div>
-          </div>
-
-          <hr className="hr" />
-          <div className="row">
-
-            <div className ="col-1">
-
-            </div>
-
-            <div className="col-md">
-
-              <div className="d-flex p-2 justify-content-start">
-                <p className="text-left text-black"><h3>Instituto de Educación Integral</h3></p>
-              </div>
-            </div>
-            
-            <div className="col-md">
-
-            <div className="d-flex p-2 justify-content-end">
-              <button className="btn">
-                <img src="/download-icon.png" width="55" />
-              </button>
-
-              <button className="btn">
-                <img src="/stats-icon.png" width="55" />
-              </button>
-
-              <button className="btn">
-                <img src="/trash-icon.png" width="55" />
-              </button>
-            </div>
-
-            </div>
-            
-
-          </div>
-          
-          <hr className="hr" />
-          <div className="row">
-
-            <div className ="col-1">
-              
-            </div>
-            <div className="col-md">
-
-              <div className="d-flex p-2 justify-content-start">
-                <p className="text-left text-black"><h3>Nubesinos</h3></p>
-              </div>
-            </div>
-            
-            <div className="col-md">
-
-            <div className="d-flex p-2 justify-content-end">
-              <button className="btn">
-                <img src="/download-icon.png" width="55" />
-              </button>
-
-              <button className="btn">
-                <img src="/stats-icon.png" width="55" />
-              </button>
-
-              <button className="btn">
-                <img src="/trash-icon.png" width="55" />
-              </button>
-            </div>
-
-            </div>
-            
-
-          </div>
-
+    <div className="nine wide column">
+      <div className="ui middle aligned mini message">
+        <div className="middle aligned header">
+          <h1>Instituto de Educación Integral</h1>
         </div>
-
       </div>
+    </div>
 
-      </main>
+    <div className="two wide column">
+      <button className="ui tiny icon button">
+      <img className= "ui tiny image" src="/download-icon.png"/>
+      </button>
+    </div>
+
+    <div className="two wide column">
+      <button className="ui tiny icon button">
+      <img className= "ui tiny image" src="/stats-icon.png"/>
+      </button>
+    </div>
+
+    <div className="two wide column">
+      <button className="ui tiny icon button">
+      <img className= "ui tiny image" src="/trash-icon.png"/>
+      </button>
+    </div>
+
+  </div>
+
+  <div className="four column row">
+    <div className="one wide column">
+
+    </div>
+
+    <div className="nine wide column">
+      <div className="ui middle aligned mini message">
+        <div className="middle aligned header">
+          <h1>Nubesinos</h1>
+        </div>
+      </div>
+    </div>
+
+    <div className="two wide column">
+      <button className="ui tiny icon button">
+      <img className= "ui tiny image" src="/download-icon.png"/>
+      </button>
+    </div>
+
+    <div className="two wide column">
+      <button className="ui tiny icon button">
+      <img className= "ui tiny image" src="/stats-icon.png"/>
+      </button>
+    </div>
+
+    <div className="two wide column">
+      <button className="ui tiny icon button">
+      <img className= "ui tiny image" src="/trash-icon.png"/>
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
     </>
   )
 }
