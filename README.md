@@ -26,6 +26,7 @@ Se utilizo la tecnologia MERN:
 
 ## Setup
 
+### Instalación de dependencias Linux
 ### Instalacion de ambiente NodeJS y React
 
 - sudo apt update
@@ -43,11 +44,15 @@ Se utilizo la tecnologia MERN:
 - npm i
 - npm start
 ________________________________
+
+### Instalación de dependencias Windows
 - Descargar o clonar este repositorio.
 - Ejecutar `npm install`
-- Ejecutar `npm start`
-- Abrir `http://localhost:3000/` en el navegador.
 
+## Correr la aplicación
+- Ejecutar `npm run build`
+- Ejecutar `npm run start`
+- Abrir `http://localhost:3000/` en el navegador.
 
 ## Status
 QRCodeTEC es un proyecto web. Su primera version esta en el proceso de desarrollo.
