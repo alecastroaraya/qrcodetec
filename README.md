@@ -48,9 +48,9 @@ ________________________________
 ### Instalación de dependencias Windows
 - Descargar o clonar este repositorio.
 - Ejecutar `npm install`
-- Ejecutar `npm run build`
 
 ## Correr la aplicación
+- Ejecutar `npm run build`
 - Ejecutar `npm run start`
 - Abrir `http://localhost:3000/` en el navegador.
 
