@@ -26,7 +26,7 @@ Se utilizo la tecnologia MERN:
 
 ## Setup
 
-## Instalación de dependencias Linux
+### Instalación de dependencias Linux
 ### Instalacion de ambiente NodeJS y React
 
 - sudo apt update
@@ -45,7 +45,7 @@ Se utilizo la tecnologia MERN:
 - npm start
 ________________________________
 
-## Instalación de dependencias Windows
+### Instalación de dependencias Windows
 - Descargar o clonar este repositorio.
 - Ejecutar `npm install`
 - Ejecutar `npm run build`
