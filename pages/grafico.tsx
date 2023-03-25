@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
+    {/* Título del tab de la página */}
       <Head>
         <title>QRCodeTEC</title>
         <meta name="description" content="" />
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
 <div className="ui fixed borderless huge menu">
     
+     {/* Barra navbar con el logo y el título de la institución (no alterar, usar en las otras páginas) */}
       <div className="item">
         <img className= "ui tiny image" src="/iei_logo.jpg"/>
       </div>
@@ -23,6 +25,7 @@ export default function Home() {
 
 </div>
 
+{/* Linebreaks para formato de la página, ignorar */}
 <br/>
 <br/>
 <br/>
@@ -32,10 +35,16 @@ export default function Home() {
 <br/>
 <br/>
 <br/>
+
+{/* Título del encabezado de la página */}
 <div className="ui container">
   <center><h1 className="ui header header-text"><u>Generador de códigos</u></h1></center>
 </div>
 
+
+{/* Inicio del cuadro con la información principal de la página */}
+
+{/* Fila con el nombre de la sección de la página, en este caso dice nombre de la página porque es la homepage */}
 <br/>
 <div className="ui container border-1">
   <div className="ui container fluid">
@@ -46,6 +55,7 @@ export default function Home() {
     </center>
   </div>
 
+    {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
   <div className="ui vertically divided bottom aligned grid">
   <div className="four column row">
 

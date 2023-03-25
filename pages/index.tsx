@@ -8,7 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <Head>
+{/* Título del tab de la página */}
+       <Head>
         <title>QRCodeTEC</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +17,7 @@ export default function Home() {
       </Head>
 <div className="ui fixed borderless huge menu">
   
-    
+    {/* Barra navbar con el logo y el título de la institución (no alterar, usar en las otras páginas) */}
       <div className="item">
         <img className= "ui tiny image" src="/iei_logo.jpg"/>
       </div>
@@ -24,6 +25,7 @@ export default function Home() {
 
 </div>
 
+{/* Linebreaks para formato de la página, ignorar */}
 <br/>
 <br/>
 <br/>
@@ -33,10 +35,15 @@ export default function Home() {
 <br/>
 <br/>
 <br/>
+
+{/* Título del encabezado de la página */}
 <div className="ui container">
   <center><h1 className="ui header header-text"><u>Generador de códigos</u></h1></center>
 </div>
 
+{/* Inicio del cuadro con la información principal de la página */}
+
+{/* Fila con el nombre de la sección de la página, en este caso dice nombre de la página porque es la homepage */}
 <br/>
 <div className="ui container border-1">
   <div className="ui container fluid">
@@ -47,10 +54,12 @@ export default function Home() {
     </center>
   </div>
 
+    {/* Estas filas contienen la información respectiva de cada página, en este caso por ser la homepage contienen la información de los códigos QR */}
   <div className="ui vertically divided bottom aligned grid">
   <div className="four column row">
     <div className="one wide column">
 
+    {/* Botón búsqueda de código QR */}
     </div>
     <div className="one wide column">
       <button className="ui icon button">
@@ -58,12 +67,14 @@ export default function Home() {
       </button>
     </div>
 
+    {/* Campo de búsqueda de código QR */}
     <div className="eleven wide column go-bottom">
       <div className="ui fluid large icon input">
       <input type="text" placeholder="Buscar códigos QR"/>
       </div>
     </div>
 
+    {/* Botón para registrar un código QR */}
     <div className="one wide column">
       <button className="ui medium button">
       <h3>Registrar</h3>
@@ -71,11 +82,13 @@ export default function Home() {
     </div>
   </div>
 
+    {/* En esta sección se comienza a mostrar todos los códigos QR y sus botones respectivos */}
   <div className="four column row">
     <div className="one wide column">
 
     </div>
 
+    {/* Aquí va el nombre del código QR */}
     <div className="nine wide column">
       <div className="ui middle aligned mini message">
         <div className="middle aligned header">
@@ -84,18 +97,23 @@ export default function Home() {
       </div>
     </div>
 
+    {/* Botones de la información del código QR*/}
+
+    {/* Botón de descargar código QR */}
     <div className="two wide column">
       <button className="ui tiny icon button">
       <img className= "ui tiny image" src="/download-icon.png"/>
       </button>
     </div>
 
+    {/* Botón de ver estadísticas del código QR */}
     <div className="two wide column">
       <button className="ui tiny icon button">
       <img className= "ui tiny image" src="/stats-icon.png"/>
       </button>
     </div>
 
+    {/* Botón de eliminar código QR */}
     <div className="two wide column">
       <button className="ui tiny icon button">
       <img className= "ui tiny image" src="/trash-icon.png"/>
@@ -104,6 +122,7 @@ export default function Home() {
 
   </div>
 
+  {/* Aquí se repite lo mismo porque esto es solo un demo, en la versión real debería ser dinámico y no hardcoded */}
   <div className="four column row">
     <div className="one wide column">
 
