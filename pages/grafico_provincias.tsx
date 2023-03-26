@@ -78,6 +78,8 @@ export default function Home() {
                   <h3>Regresar</h3>
                 </a>
               </button>
+              <br />
+              <br />
             </div>
           </div>
         </div>
