@@ -62,6 +62,14 @@ export default function Home() {
         <div className="ui vertically divided bottom aligned grid">
           <div className="four column row"></div>
           {/**/}
+          <div className="one wide column">
+            <button className="ui small button">
+              <a href="/">
+                <h3>Regresar</h3>
+              </a>
+            </button>
+          </div>
+          {/**/}
         </div>
       </div>
     </>
