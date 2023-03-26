@@ -60,33 +60,26 @@ export default function Home() {
 
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
         <div className="ui vertically divided bottom aligned grid">
-          <div className="two column row"></div>
-          {/**/}
+          <div className="nine column row">
+            <div className="nine wide column">
+              <img src="/grafico.png" />
+              <h5>
+                *Seleccione una provincia del gráfico para ver los cantones
+              </h5>
+            </div>
 
-          <div className="one wide column">
-            <img src="/grafico.png" />
-            <br />
-            <br />
-            <br />
-            <br />
-          </div>
-
-          <div className="right aligned header">
-            <h1>Número total de vistas</h1>
-            <h2>----------------------</h2>
-
-            <div className="one wide column">
+            <div className="nine wide column">
+              <div className="middle aligned header">
+                <h1>Número total de vistas</h1>
+                <h2>----------------------</h2>
+              </div>
               <button className="ui small button">
                 <a href="/">
                   <h3>Regresar</h3>
                 </a>
               </button>
             </div>
-            <br />
-            <br />
           </div>
-
-          {/**/}
         </div>
       </div>
     </>
