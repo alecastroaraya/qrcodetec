@@ -221,6 +221,13 @@ a:hover {
   color: #ffffff;
 }
 
+.ui.medium.button{
+  margin-top: 50px;
+  margin-left: 80px;
+  background-color: #01899C;
+  color: #ffffff;
+}
+
 .ui.inverted.segment{
   background-color: #01899C;
 }
