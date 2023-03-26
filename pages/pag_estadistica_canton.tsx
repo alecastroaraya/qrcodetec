@@ -99,28 +99,18 @@ export default function pag_estadistica_canton() {
     {/* Estas filas contienen la información respectiva de cada página, en este caso por ser la homepage contienen la información de los códigos QR */}
     <div className="ui vertically divided bottom aligned grid">
     <div className="four column row">
-    <div className="one wide column">
-
-    {/* Botón búsqueda de código QR */}
-    </div>
-
-    {/* Botón para registrar un código QR */}
-
-    </div>
-
-    {/* En esta sección se comienza a mostrar todos los códigos QR y sus botones respectivos */}
-    <div className="four column row">
-    <div className="one wide column">
-
-    </div>
-        <div>
+        
+    <div className = "two wide row" style ={{width:'50%',height:'50%' }} >
         <Doughnut1 />
         </div>
     
-    <div className="two wide column">
-        <button className="ui medium button">
-        <h3>Regresar</h3>
-        </button>
+    <div className="one wide column">
+      <button className="ui small button">
+      <h3>Regresar</h3>
+      </button>
+    </div>
+    <div className="one wide column">
+
     </div>
 
     </div>
