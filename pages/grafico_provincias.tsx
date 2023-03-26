@@ -60,15 +60,32 @@ export default function Home() {
 
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
         <div className="ui vertically divided bottom aligned grid">
-          <div className="four column row"></div>
+          <div className="two column row"></div>
           {/**/}
+
           <div className="one wide column">
-            <button className="ui small button">
-              <a href="/">
-                <h3>Regresar</h3>
-              </a>
-            </button>
+            <img src="/grafico.png" />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
+
+          <div className="right aligned header">
+            <h1>Número total de vistas</h1>
+            <h2>----------------------</h2>
+
+            <div className="one wide column">
+              <button className="ui small button">
+                <a href="/">
+                  <h3>Regresar</h3>
+                </a>
+              </button>
+            </div>
+            <br />
+            <br />
+          </div>
+
           {/**/}
         </div>
       </div>
