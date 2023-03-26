@@ -193,7 +193,8 @@
   border-radius: 5px;
 }
 
-.ui.medium.button{
+.ui.small.button{
+  margin-top: 20px;
   background-color: #01899C;
   color: #ffffff;
 }
