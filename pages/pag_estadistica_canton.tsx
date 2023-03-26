@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import React from 'react';
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import '../styles/Home.module.css'
 import { Doughnut } from 'react-chartjs-2';
 import {Chart, ArcElement} from 'chart.js'
 Chart.register(ArcElement);
@@ -35,17 +34,23 @@ export default function pag_estadistica_canton() {
                 'yellow',
             ],
             borderWidth: 1,
+           
           },
         ],
+        
       };
+
+
+      
 
       const Doughnut1: React.FC = () => {
         return (
           <div>
-            <Doughnut data={data}  />
+            <Doughnut data={data} />
           </div>
         );
       };
+
 
 
     return (
@@ -95,26 +100,18 @@ export default function pag_estadistica_canton() {
     </div>
     </center>
     </div>
-
-    {/* Estas filas contienen la información respectiva de cada página, en este caso por ser la homepage contienen la información de los códigos QR */}
-    <div className="ui vertically divided bottom aligned grid">
-    <div className="four column row">
-        
-    <div className = "two wide row" style ={{width:'50%',height:'50%' }} >
+    <br/>
+    <br/>
+    <br/>
+    <center>
+    <div  style={{height: '50%' , width: '50%'}} >
         <Doughnut1 />
-        </div>
-    
+    </div>
+    </center>
     <div className="one wide column">
       <button className="ui small button">
       <h3>Regresar</h3>
       </button>
-    </div>
-    <div className="one wide column">
-
-    </div>
-
-    </div>
-
     </div>
 
     </div>
