@@ -60,26 +60,37 @@ export default function Home() {
 
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
             <Form onSubmit={() => console.log("Submitted") }>
-                <Form.Input
-                label="Nombre"
+                
+            <Form.Field inline>
+              <label>Nombre:</label>
+              <input
                 placeholder="Nombre"
                 name="nombre"
+                style={{ marginBottom: '1rem', width: '50%' }}
                 autoFocus
-                />
-                <Form.TextArea
-                label="Description"
-                placeholder="Ingrese la descripcion"
-                name="description"
-                />
-                <Form.Input
-                label="URL"
+              />
+            </Form.Field>
+            <Form.Field inline>
+              <label>Descripción:</label>
+              <Form.TextArea
+                placeholder="Ingrese la descripción"
+                name="descripcion"
+                style={{ width: '50%' }}
+                autoFocus
+              />
+            </Form.Field>
+            <Form.Field inline>
+              <label>URL:</label>
+              <input
                 placeholder="Ingrese el URL"
                 name="url"
                 autoFocus
-                />
-                <Button type="submit " primary>
-                    Cancelar
-                </Button>
+              />
+            </Form.Field>
+
+
+                <Button type="submit">Registrar</Button>
+                <Button>Cancelar</Button>
             </Form>
       </div>
     </>
