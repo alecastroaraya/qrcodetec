@@ -70,13 +70,13 @@ export default function Home() {
     {/* Campo de búsqueda de código QR */}
     <div className="eleven wide column go-bottom">
       <div className="ui fluid large icon input">
-      <input type="text" placeholder="Buscar códigos QR"/>
+      <input type="text" placeholder="Buscar nombre de la pagina"/>
       </div>
     </div>
 
     {/* Botón para registrar un código QR */}
     <div className="one wide column">
-      <button className="ui medium button">
+      <button className="ui small button">
       <h3>Registrar</h3>
       </button>
     </div>
