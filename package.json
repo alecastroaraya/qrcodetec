@@ -16,6 +16,7 @@
     "@types/semantic-ui": "^2.2.7",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",

@@ -108,9 +108,17 @@ export default function Home() {
 
     {/* Botón de ver estadísticas del código QR */}
     <div className="two wide column">
-      <button className="ui tiny icon button">
-      <img className= "ui tiny image" src="/stats-icon.png"/>
-      </button>
+      
+      <div className="ui tiny fluid menu">
+        <div className="ui tiny simple fluid dropdown item">
+          <img className= "ui tiny fluid image" src="/stats-icon.png"/>
+          <div className="menu">
+            <div className="item"><a href="/grafico_provincias"><h2>Por provincias</h2></a></div>
+            <div className="item"><a href="/pag_estadistica_canton"><h2>Por cantones</h2></a></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     {/* Botón de eliminar código QR */}
@@ -128,6 +136,7 @@ export default function Home() {
 
     </div>
 
+    {/* Aquí va el nombre del código QR */}
     <div className="nine wide column">
       <div className="ui middle aligned mini message">
         <div className="middle aligned header">
@@ -136,18 +145,31 @@ export default function Home() {
       </div>
     </div>
 
+    {/* Botones de la información del código QR*/}
+
+    {/* Botón de descargar código QR */}
     <div className="two wide column">
       <button className="ui tiny icon button">
       <img className= "ui tiny image" src="/download-icon.png"/>
       </button>
     </div>
 
+    {/* Botón de ver estadísticas del código QR */}
     <div className="two wide column">
-      <button className="ui tiny icon button">
-      <img className= "ui tiny image" src="/stats-icon.png"/>
-      </button>
+      
+    <div className="ui tiny fluid menu">
+        <div className="ui tiny simple fluid dropdown item">
+          <img className= "ui tiny fluid image" src="/stats-icon.png"/>
+          <div className="menu">
+            <div className="item"><a href="/grafico_provincias"><h2>Por provincias</h2></a></div>
+            <div className="item"><a href="/pag_estadistica_canton"><h2>Por cantones</h2></a></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
+    {/* Botón de eliminar código QR */}
     <div className="two wide column">
       <button className="ui tiny icon button">
       <img className= "ui tiny image" src="/trash-icon.png"/>

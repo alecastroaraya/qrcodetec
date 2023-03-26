@@ -110,7 +110,7 @@ export default function pag_estadistica_canton() {
     </center>
     <div className="one wide column">
       <button className="ui small button">
-      <h3>Regresar</h3>
+      <a href="/"><h3>Regresar</h3></a>
       </button>
     </div>
 
