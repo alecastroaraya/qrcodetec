@@ -1,7 +1,8 @@
 import Head from "next/head";
+import { Form, TextArea, Button } from 'semantic-ui-react';
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { Button, Form } from 'semantic-ui-react'
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,6 +46,7 @@ export default function Home() {
         </center>
       </div>
 
+
       {/* Inicio del cuadro con la información principal de la página */}
 
       {/* Fila con el nombre de la sección de la página, en este caso dice nombre de la página porque es la homepage */}
@@ -59,38 +61,44 @@ export default function Home() {
         </div>
 
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
-            <Form onSubmit={() => console.log("Submitted") }>
-                
-            <Form.Field inline>
-              <label>Nombre:</label>
-              <input
-                placeholder="Nombre"
-                name="nombre"
-                style={{ marginBottom: '1rem', width: '50%' }}
-                autoFocus
-              />
-            </Form.Field>
-            <Form.Field inline>
-              <label>Descripción:</label>
-              <Form.TextArea
-                placeholder="Ingrese la descripción"
-                name="descripcion"
-                style={{ width: '50%' }}
-                autoFocus
-              />
-            </Form.Field>
-            <Form.Field inline>
-              <label>URL:</label>
-              <input
-                placeholder="Ingrese el URL"
-                name="url"
-                autoFocus
-              />
-            </Form.Field>
+        <Form onSubmit={() => console.log("Submitted") }>
+        <br/>
+        
+        <Form.Field style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '50px' }}>
+          <label style={{ width: '80px' }}>Nombre:</label>
+          <input
+            placeholder="Ingrese el nombre"
+            name="nombre"
+            style={{ marginBottom: '1rem', width: '380px' }}
+            autoFocus
+          />
+        </Form.Field>
+
+          <Form.Field inline style={{ paddingLeft: '50px' }}>
+            <label>Descripción</label>
+            <TextArea
+              placeholder="Ingrese la descripción"
+              name="descripcion"
+              style={{ marginBottom: '1rem', width: '380px'}}
+            />
+          </Form.Field>
+          <Form.Field style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '50px' }}>
+            <br/>
+            <label style={{ width: '80px' }}>Dirección de URL</label>
+            <input
+              placeholder="Dirección de URL"
+              name="Dirección de URL"
+              style={{ marginBottom: '1rem', width: '380px' }}
+              autoFocus
+            />
+          </Form.Field>
+          <Button type="submit" style={{ marginLeft: '450px' }}>Registrar</Button>
+          <Button style={{ marginLeft: '10px', marginBottom: '30px'  }}>Cancelar</Button>
+          <img src="qr.jpg"  width="300" height="300"/>
 
 
-                <Button type="submit">Registrar</Button>
-                <Button>Cancelar</Button>
+
+
             </Form>
       </div>
     </>
