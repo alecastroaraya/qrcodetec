@@ -63,18 +63,21 @@ export default function Home() {
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
         <Form onSubmit={() => console.log("Submitted") }>
         <br/>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          <div style={{ flex: '1', paddingRight: '20px' }}>
+          <br/>
         
-        <Form.Field style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '50px' }}>
-          <label style={{ width: '80px' }}>Nombre:</label>
-          <input
-            placeholder="Ingrese el nombre"
-            name="nombre"
-            style={{ marginBottom: '1rem', width: '380px' }}
-            autoFocus
-          />
-        </Form.Field>
-
-          <Form.Field inline style={{ paddingLeft: '50px' }}>
+            <Form.Field style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '50px' }}>
+              <label style={{ width: '80px' }}>Nombre:</label>
+              <input
+                placeholder="Ingrese el nombre"
+                name="nombre"
+                style={{ marginBottom: '1rem', width: '380px' }}
+                autoFocus
+              />
+            
+            </Form.Field>
+            <Form.Field inline style={{ paddingLeft: '50px' }}>
             <label>Descripción</label>
             <TextArea
               placeholder="Ingrese la descripción"
@@ -92,14 +95,14 @@ export default function Home() {
               autoFocus
             />
           </Form.Field>
-          <Button type="submit" style={{ marginLeft: '450px' }}>Registrar</Button>
-          <Button style={{ marginLeft: '10px', marginBottom: '30px'  }}>Cancelar</Button>
-          <img src="qr.jpg"  width="300" height="300"/>
-
-
-
-
-            </Form>
+            <Button type="submit" style={{ marginLeft: '450px', backgroundColor: '#01899c', color: 'white' }}>Registrar</Button>
+            <Button style={{ marginLeft: '10px', backgroundColor: '#01899c', color: 'white' }}>Cancelar</Button>
+          </div>
+          <div style={{ flex: '1', maxWidth: '400px' }}>
+            <img src="qr.jpg" width="300" height="300" />
+          </div>
+        </div>
+        </Form>
       </div>
     </>
   );
