@@ -93,7 +93,7 @@ export default function Home() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', maxWidth: '400px' }}>
             <img src="qr.jpg" width="250" height="250" style={{ marginLeft: '-450px' }}/>
-            <Button style={{  marginBottom: '20px', marginLeft: '-450px', marginTop: '20px', backgroundColor: '#01899c', color: 'white' }}>Descargar</Button>
+            <Button style={{ width:'100px', marginBottom: '20px', marginLeft: '-375px', marginTop: '20px', backgroundColor: '#01899c', color: 'white' }}>Descargar</Button>
           </div>
 
         </div>
