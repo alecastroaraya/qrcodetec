@@ -47,6 +47,7 @@ ________________________________
 
 ### Instalación de dependencias Windows
 - Descargar o clonar este repositorio.
+- Descargar e instalar NodeJS y NPM.
 - Ejecutar `npm install`
 
 ## Correr la aplicación
