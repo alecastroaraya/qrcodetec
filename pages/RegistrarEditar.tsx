@@ -96,7 +96,7 @@ export default function Home() {
             />
           </Form.Field>
             <Button type="submit" style={{ marginLeft: '450px', backgroundColor: '#01899c', color: 'white' }}>Registrar</Button>
-            <Button style={{ marginBottom: '20px', marginLeft: '10px', backgroundColor: '#01899c', color: 'white' }}>Cancelar</Button>
+            <Button style={{ marginBottom: '20px', marginLeft: '10px', backgroundColor: '#01899c', color: 'white' }}><a href="/">Cancelar</a></Button>
           </div>
           <div style={{ flex: '1', maxWidth: '400px' }}>
             <img src="qr.jpg" width="250" height="250" />

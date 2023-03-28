@@ -53,7 +53,7 @@ export default function Home() {
         <div className="ui container fluid">
           <center>
             <div className="ui inverted segment">
-              <h2>Estadísticas de la página</h2>
+              <h2>Estadísticas por provincia</h2>
             </div>
           </center>
         </div>
@@ -65,11 +65,9 @@ export default function Home() {
 
             </div>
 
-            <div className="seven wide column">
-              <img src="/grafico.png" />
-              <h5>
-                *Seleccione una provincia del gráfico para ver los cantones
-              </h5>
+            <div className="nine wide column">
+              <img src="/grafico_ejemplo.png" />
+              <center><h4>*Seleccione una provincia del gráfico para ver los cantones</h4></center>
             </div>
 
 

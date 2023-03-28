@@ -77,7 +77,7 @@ export default function Home() {
     {/* Botón para registrar un código QR */}
     <div className="one wide column">
       <button className="ui small button">
-      <h3>Registrar</h3>
+      <a href="/RegistrarEditar"><h3>Registrar</h3></a>
       </button>
     </div>
   </div>
