@@ -3,7 +3,9 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react';
+import { useEffect } from "react";
 import Layout from '@/components/Layout';
+const QRCode = require('qrcode');
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,10 +14,10 @@ type Props = {
 }
 
 type QRCode = {
-  _id: String;
-  name: String;
-  description: String;
-  url: String;
+  _id: string;
+  name: string;
+  description: string;
+  url: string;
 }
 
 export async function getServerSideProps() {
@@ -33,25 +35,36 @@ export async function getServerSideProps() {
 
 export default function Home(props: Props) {
   const [qrCodes, setQRCodes] = useState<[QRCode]>(props.qrCodes);
+  const [searchValue, setSearchValue] = useState('');
 
-  const handleDeletePost = async (qrCodeId: string) => {
-    try {
-      let response = await fetch(
-        "http://localhost:3000/api/deleteQR?id=" + qrCodeId,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      response = await response.json();
-      window.location.reload();
-    } catch (error) {
-      console.log("An error occurred while deleting ", error);
-    }
+  const handleSearch = () => {
+    fetch(`/api/getQRsbyName?name=${searchValue}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setQRCodes(data);
+      })
+      .catch((error) => {
+        console.error('Error al intentar obtener los códigos QR:', error);
+      });
   };
+
+  async function generateQRCodeDataURL(url: string, fileName:string): Promise<string> {
+    try {
+      const qrCodeDataURL = await QRCode.toDataURL(url);
+      console.log('Código QR generado como DataURL');
+      console.log(qrCodeDataURL);
+      
+      const anchor = document.createElement("a");
+      anchor.href = qrCodeDataURL;
+      anchor.download = fileName+'.png';
+      anchor.click();
+
+      return qrCodeDataURL;
+    } catch (err) {
+      console.error(err);
+      throw new Error('No se pudo generar el DataURL del código QR');
+    }
+  }
 
   return (
     <>
@@ -68,7 +81,7 @@ export default function Home(props: Props) {
       <div className="item">
         <img className= "ui tiny image" src="/iei_logo.jpg"/>
       </div>
-      <a className="header item"><h1>Instituto de Educación Integral</h1></a>
+      <a className="header item" href="/"><h1>Instituto de Educación Integral</h1></a>
 
 </div>
 
@@ -89,67 +102,8 @@ export default function Home(props: Props) {
 </div>
 
 <Layout>
-    <div className="posts-body">
-      <h1 className="posts-body-heading">Top 20 Added Posts</h1>
-      {qrCodes.length > 0 ? (
-        <ul className="posts-list">
-          {qrCodes.map((qrCode, index) => {
-            return (
-              <li key={index} className="post-item">
-                <div className="post-item-details">
-                  <h2>{qrCode.name}</h2>
-
-                  <p>{qrCode.description}</p>
-                </div>
-                <div className="post-item-actions">
-                  <a href={`/posts/${qrCode._id}`}>Edit</a>
-                  <button onClick={() => handleDeletePost(qrCode._id as string)}>
-                    Delete
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <h2 className="posts-body-heading">Ooops! No posts added so far</h2>
-      )}
-    </div>
-    <style jsx>
-      {`
-        .posts-body {
-          width: 400px;
-          margin: 10px auto;
-        }
-        .posts-body-heading {
-          font-family: sans-serif;
-        }
-        .posts-list {
-          list-style-type: none;
-          display: block;
-        }
-        .post-item {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #d5d5d5;
-        }
-        .post-item-actions {
-          display: flex;
-          justify-content: space-between;
-        }
-        .post-item-actions a {
-          text-decoration: none;
-        }
-      `}
-    </style>
-  </Layout>
-
-{/* Inicio del cuadro con la información principal de la página */}
-
-{/* Fila con el nombre de la sección de la página, en este caso dice nombre de la página porque es la homepage */}
-<br/>
 <div className="ui container border-1">
-  <div className="ui container fluid">
+    <div className="ui container fluid">
     <center>
     <div className="ui inverted segment">
     <h2>Nombre de la página</h2>
@@ -157,7 +111,8 @@ export default function Home(props: Props) {
     </center>
   </div>
 
-    {/* Estas filas contienen la información respectiva de cada página, en este caso por ser la homepage contienen la información de los códigos QR */}
+    <div className="ui container border-1">
+
   <div className="ui vertically divided bottom aligned grid">
   <div className="four column row">
     <div className="one wide column">
@@ -165,15 +120,20 @@ export default function Home(props: Props) {
     {/* Botón búsqueda de código QR */}
     </div>
     <div className="one wide column">
-      <button className="ui icon button">
-      <img className= "ui mini image" src="/search-icon.png"/>
+      <button className="ui icon button" onClick={handleSearch}>
+        <img className="ui mini image" src="/search-icon.png" />
       </button>
     </div>
 
     {/* Campo de búsqueda de código QR */}
     <div className="eleven wide column go-bottom">
       <div className="ui fluid large icon input">
-      <input type="text" placeholder="Buscar nombre de la pagina"/>
+      <input
+          type="text"
+          placeholder="Buscar nombre de la pagina"
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value) }
+        />
       </div>
     </div>
 
@@ -184,9 +144,24 @@ export default function Home(props: Props) {
       </button>
     </div>
   </div>
+  </div>
+
+  </div>
+      {qrCodes.length > 0 ? (
+        <div className="qrcodes-list">
+          
+          {qrCodes.map((qrCode, index) => {
+            return (
+
+<div className="ui container border-1">
+  
+
+    {/* Estas filas contienen la información respectiva de cada página, en este caso por ser la homepage contienen la información de los códigos QR */}
+  <div className="ui vertically divided bottom aligned grid">
+  
 
     {/* En esta sección se comienza a mostrar todos los códigos QR y sus botones respectivos */}
-  <div className="four column row">
+  <div key={index} className="four column row">
     <div className="one wide column">
 
     </div>
@@ -195,7 +170,7 @@ export default function Home(props: Props) {
     <div className="nine wide column">
       <div className="ui middle aligned mini message">
         <div className="middle aligned header">
-          <h1>Instituto de Educación Integral</h1>
+          <h1>{qrCode.name}: {qrCode.url}</h1>
         </div>
       </div>
     </div>
@@ -204,7 +179,7 @@ export default function Home(props: Props) {
 
     {/* Botón de descargar código QR */}
     <div className="two wide column">
-      <button className="ui tiny icon button">
+      <button className="ui tiny icon button" onClick={() => generateQRCodeDataURL(qrCode.url,qrCode.name)}>
       <img className= "ui tiny image" src="/download-icon.png"/>
       </button>
     </div>
@@ -233,57 +208,18 @@ export default function Home(props: Props) {
 
   </div>
 
-  {/* Aquí se repite lo mismo porque esto es solo un demo, en la versión real debería ser dinámico y no hardcoded */}
-  <div className="four column row">
-    <div className="one wide column">
-
-    </div>
-
-    {/* Aquí va el nombre del código QR */}
-    <div className="nine wide column">
-      <div className="ui middle aligned mini message">
-        <div className="middle aligned header">
-          <h1>Nubesinos</h1>
-        </div>
-      </div>
-    </div>
-
-    {/* Botones de la información del código QR*/}
-
-    {/* Botón de descargar código QR */}
-    <div className="two wide column">
-      <button className="ui tiny icon button">
-      <img className= "ui tiny image" src="/download-icon.png"/>
-      </button>
-    </div>
-
-    {/* Botón de ver estadísticas del código QR */}
-    <div className="two wide column">
-      
-    <div className="ui tiny fluid menu">
-        <div className="ui tiny simple fluid dropdown item">
-          <img className= "ui tiny fluid image" src="/stats-icon.png"/>
-          <div className="menu">
-            <div className="item"><a href="/grafico_provincias"><h2>Por provincias</h2></a></div>
-            <div className="item"><a href="/pag_estadistica_canton"><h2>Por cantones</h2></a></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    {/* Botón de eliminar código QR */}
-    <div className="two wide column">
-      <button className="ui tiny icon button">
-      <img className= "ui tiny image" src="/trash-icon.png"/>
-      </button>
-    </div>
-
-  </div>
-
 </div>
 
 </div>
+            );
+          })}
+        </div>
+      ) : (
+        <h1 className="qrcodes-body-heading"><center>No hay códigos QR agregados todavía.</center></h1>
+      )}
+    </div>
+  </Layout>
+
     </>
   )
 }

@@ -4,13 +4,9 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 const QRCode = require('qrcode');
-
+import fs from 'fs';
 
 const inter = Inter({ subsets: ["latin"] });
-
-export function AddPost() {
-  
-}
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -18,6 +14,19 @@ export default function Home() {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  
+  async function generateQRCodeDataURL(url: string): Promise<string> {
+    try {
+      const qrCodeDataURL = await QRCode.toDataURL(url);
+      console.log('QR code generated as Data URL');
+      console.log(qrCodeDataURL);
+      return qrCodeDataURL;
+    } catch (err) {
+      console.error(err);
+      throw new Error('Failed to generate QR code Data URL');
+    }
+  }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -40,12 +49,18 @@ export default function Home() {
         setDescription("");
         setUrl("");
         setError("");
-        setMessage("QR code added successfully");
+        generateQRCodeDataURL(url);
+        setMessage("QR code agregado con éxito. Volviendo a homepage...");
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000); // Delay de 2 segundos
+
       } catch (errorMessage: any) {
         setError(errorMessage);
       }
     } else {
-      return setError("All fields are required");
+      return setError("Por favor llene todos los campos con información válida");
     }
   };
 
@@ -63,9 +78,7 @@ export default function Home() {
         <div className="item">
           <img className="ui tiny image" src="/iei_logo.jpg" />
         </div>
-        <a className="header item">
-          <h1>Instituto de Educación Integral</h1>
-        </a>
+        <a className="header item" href="/"><h1>Instituto de Educación Integral</h1></a>
       </div>
 
       {/* Linebreaks para formato de la página, ignorar */}
@@ -143,7 +156,6 @@ export default function Home() {
             />
           </Form.Field>
             <Button type="submit" style={{ marginLeft: '450px', backgroundColor: '#01899c', color: 'white' }}>Registrar</Button>
-            <Button style={{ marginBottom: '20px', marginLeft: '10px', backgroundColor: '#01899c', color: 'white' }}><a href="/">Cancelar</a></Button>
           </div>
           <div style={{ flex: '1', maxWidth: '400px' }}>
             <img src="qr.jpg" width="250" height="250" />
@@ -151,6 +163,7 @@ export default function Home() {
           </div>
         </div>
         </Form>
+        <Button style={{ marginBottom: '20px', marginLeft: '10px', backgroundColor: '#01899c', color: 'white' }}><a href="/">Cancelar</a></Button>
       </div>
     </>
   );

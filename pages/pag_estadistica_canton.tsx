@@ -70,7 +70,7 @@ export default function pag_estadistica_canton() {
         <div className="item">
             <img className= "ui tiny image" src="/iei_logo.jpg"/>
         </div>
-            <a className="header item"><h1>Instituto de Educación Integral</h1></a>
+        <a className="header item" href="/"><h1>Instituto de Educación Integral</h1></a>
         </div>
 
             
