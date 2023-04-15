@@ -2,11 +2,53 @@ import Head from "next/head";
 import { Form, TextArea, Button } from 'semantic-ui-react';
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useState } from "react";
+const QRCode = require('qrcode');
 
 
 const inter = Inter({ subsets: ["latin"] });
 
+export function AddPost() {
+  
+}
+
 export default function Home() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [url, setUrl] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    if (name && description && url) {
+      try {
+        let response = await fetch("http://localhost:3000/api/addQR", {
+          method: "POST",
+          body: JSON.stringify({
+            name,
+            description,
+            url,
+          }),
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+        });
+        response = await response.json();
+        setName("");
+        setDescription("");
+        setUrl("");
+        setError("");
+        setMessage("QR code added successfully");
+      } catch (errorMessage: any) {
+        setError(errorMessage);
+      }
+    } else {
+      return setError("All fields are required");
+    }
+  };
+
   return (
     <>
       {/* Título del tab de la página */}
@@ -61,16 +103,19 @@ export default function Home() {
         </div>
 
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
-        <Form onSubmit={() => console.log("Submitted") }>
+        <Form onSubmit={ handleSubmit }>
         <br/>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <div style={{ flex: '1', paddingRight: '20px' }}>
           <br/>
+          {error ? <div className="alert-error">{error}</div> : null}
+          {message ? <div className="alert-message">{message}</div> : null}
         
             <Form.Field style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '50px' }}>
               <label style={{ width: '80px' }}>Nombre:</label>
               <input
                 placeholder="Ingrese el nombre"
+                onChange={(e) => setName(e.target.value)}
                 name="nombre"
                 style={{ marginBottom: '1rem', width: '380px' }}
                 autoFocus
@@ -81,6 +126,7 @@ export default function Home() {
             <label>Descripción</label>
             <TextArea
               placeholder="Ingrese la descripción"
+              onChange={(e) => setDescription(e.target.value)}
               name="descripcion"
               style={{ marginBottom: '1rem', width: '380px'}}
             />
@@ -90,6 +136,7 @@ export default function Home() {
             <label style={{ width: '80px' }}>Dirección de URL</label>
             <input
               placeholder="Dirección de URL"
+              onChange={(e) => setUrl(e.target.value)}
               name="Dirección de URL"
               style={{ marginBottom: '1rem', width: '380px' }}
               autoFocus

@@ -2,10 +2,57 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useState } from 'react';
+import Layout from '@/components/Layout';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+type Props = {
+  qrCodes: [QRCode]
+}
+
+type QRCode = {
+  _id: String;
+  name: String;
+  description: String;
+  url: String;
+}
+
+export async function getServerSideProps() {
+  try {
+    let response = await fetch('http://localhost:3000/api/getQRs');
+    let qrCodes = await response.json();
+
+    return {
+      props: { qrCodes: JSON.parse(JSON.stringify(qrCodes)) },
+    };
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export default function Home(props: Props) {
+  const [qrCodes, setQRCodes] = useState<[QRCode]>(props.qrCodes);
+
+  const handleDeletePost = async (qrCodeId: string) => {
+    try {
+      let response = await fetch(
+        "http://localhost:3000/api/deleteQR?id=" + qrCodeId,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      response = await response.json();
+      window.location.reload();
+    } catch (error) {
+      console.log("An error occurred while deleting ", error);
+    }
+  };
+
   return (
     <>
 {/* Título del tab de la página */}
@@ -40,6 +87,62 @@ export default function Home() {
 <div className="ui container">
   <center><h1 className="ui header header-text"><u>Generador de códigos</u></h1></center>
 </div>
+
+<Layout>
+    <div className="posts-body">
+      <h1 className="posts-body-heading">Top 20 Added Posts</h1>
+      {qrCodes.length > 0 ? (
+        <ul className="posts-list">
+          {qrCodes.map((qrCode, index) => {
+            return (
+              <li key={index} className="post-item">
+                <div className="post-item-details">
+                  <h2>{qrCode.name}</h2>
+
+                  <p>{qrCode.description}</p>
+                </div>
+                <div className="post-item-actions">
+                  <a href={`/posts/${qrCode._id}`}>Edit</a>
+                  <button onClick={() => handleDeletePost(qrCode._id as string)}>
+                    Delete
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <h2 className="posts-body-heading">Ooops! No posts added so far</h2>
+      )}
+    </div>
+    <style jsx>
+      {`
+        .posts-body {
+          width: 400px;
+          margin: 10px auto;
+        }
+        .posts-body-heading {
+          font-family: sans-serif;
+        }
+        .posts-list {
+          list-style-type: none;
+          display: block;
+        }
+        .post-item {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #d5d5d5;
+        }
+        .post-item-actions {
+          display: flex;
+          justify-content: space-between;
+        }
+        .post-item-actions a {
+          text-decoration: none;
+        }
+      `}
+    </style>
+  </Layout>
 
 {/* Inicio del cuadro con la información principal de la página */}
 
