@@ -14,7 +14,7 @@ export default function Home() {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-
+  const [imgSrc, setImgSrc] = useState("");
   
   async function generateQRCodeDataURL(url: string): Promise<string> {
     try {
@@ -49,10 +49,12 @@ export default function Home() {
         setDescription("");
         setUrl("");
         setError("");
-        generateQRCodeDataURL(url);
-        setMessage("QR code agregado con éxito. Volviendo a homepage...");
+        let qrURL = await generateQRCodeDataURL(url);
+        setImgSrc(qrURL);
+        setMessage("QR code agregado con éxito. Volviendo a la pagina principal...");
 
         setTimeout(() => {
+          alert("QR generado con éxito. Se volverá a la página principal.");
           window.location.href = "/";
         }, 2000); // Delay de 2 segundos
 
@@ -118,7 +120,7 @@ export default function Home() {
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
         <Form onSubmit={ handleSubmit }>
         <br/>
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <div style={{ flex: '1', paddingRight: '20px' }}>
           <br/>
           {error ? <div className="alert-error">{error}</div> : null}
@@ -157,10 +159,11 @@ export default function Home() {
           </Form.Field>
             <Button type="submit" style={{ marginLeft: '450px', backgroundColor: '#01899c', color: 'white' }}>Registrar</Button>
           </div>
+          {imgSrc && (
           <div style={{ flex: '1', maxWidth: '400px' }}>
-            <img src="qr.jpg" width="250" height="250" />
-            
+          <img src={imgSrc} width="250" height="250" />
           </div>
+          )}
         </div>
         </Form>
         <Button style={{ marginBottom: '20px', marginLeft: '10px', backgroundColor: '#01899c', color: 'white' }}><a href="/">Cancelar</a></Button>

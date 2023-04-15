@@ -215,7 +215,7 @@ export default function Home(props: Props) {
           })}
         </div>
       ) : (
-        <h1 className="qrcodes-body-heading"><center>No hay códigos QR agregados todavía.</center></h1>
+        <h1 className="qrcodes-body-heading"><center>No se encontraron códigos QR.</center></h1>
       )}
     </div>
   </Layout>
