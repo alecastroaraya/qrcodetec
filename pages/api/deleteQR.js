@@ -1,4 +1,5 @@
 import clientPromise from "../../lib/mongodb";
+import { ObjectId } from "mongodb";
 
 export default async (req, res) => {
   try {
@@ -6,11 +7,11 @@ export default async (req, res) => {
     const db = client.db("qrcodes");
     const { id } = req.query;
 
-    const qrCodes = await db.collection("qrcodes").deleteOne({
-        _id: ObjectId(id),
-      });
+    const qrCode = await db.collection("qrcodes").deleteOne({
+      _id: new ObjectId(id),
+    });
 
-    res.json(qrCodes);
+    res.json(qrCode);
   } catch (e) {
     console.error(e);
     throw new Error(e).message;
