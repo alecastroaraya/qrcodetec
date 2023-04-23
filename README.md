@@ -46,6 +46,7 @@ Se utilizo la tecnologia MERN:
 ________________________________
 
 ### Instalación de dependencias Windows
+- Descargar MongoDB Server desde https://www.mongodb.com/try/download/community
 - Descargar o clonar este repositorio.
 - Descargar e instalar NodeJS y NPM.
 - Ejecutar `npm install`
