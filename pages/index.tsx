@@ -48,6 +48,22 @@ export default function Home(props: Props) {
       });
   };
 
+  const handleDeleteQR = async (qrId: string) => {
+    try {
+      let response = await fetch(`/api/deleteQR?id=` + qrId, {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      });
+      response = await response.json();
+      window.location.reload();
+    } catch (error) {
+      console.log("An error occurred while deleting ", error);
+    }
+  };
+
   async function generateQRCodeDataURL(
     url: string,
     fileName: string
@@ -218,7 +234,10 @@ export default function Home(props: Props) {
 
                         {/* Botón de eliminar código QR */}
                         <div className="two wide column">
-                          <button className="ui tiny icon button">
+                          <button
+                            className="ui tiny icon button"
+                            onClick={() => handleDeleteQR(qrCode._id as string)}
+                          >
                             <img
                               className="ui tiny image"
                               src="/trash-icon.png"
