@@ -48,9 +48,9 @@ export default function Home(props: Props) {
       });
   };
 
-  const handleDeleteQR = async (qrId: string) => {
+  const handleDeleteQR = async (QR_Id: string) => {
     try {
-      let response = await fetch(`/api/deleteQR?id=` + qrId, {
+      let response = await fetch(`/api/deleteQR?id=${QR_Id}`, {
         method: "POST",
         headers: {
           Accept: "application/json, text/plain, */*",
