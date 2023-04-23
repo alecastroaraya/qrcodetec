@@ -54,7 +54,7 @@ ________________________________
 ## Correr la aplicación
 - Ejecutar `npm run build`
 - Ejecutar `npm run start`
-- Abrir `http://localhost:3000/` en el navegador.
+- Abrir `http://127.0.0.1:3000/` en el navegador.
 
 ## Status
 QRCodeTEC es un proyecto web. Su primera version esta en el proceso de desarrollo.
