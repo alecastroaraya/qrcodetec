@@ -49,9 +49,7 @@ export default function Home(props: Props) {
   };
 
   const handleDeleteQR = async (QR_Id: string) => {
-    console.log("FUNCIONA AQUÍ");
     try {
-      console.log("ENTRO AL TRY");
       let response = await fetch(`/api/deleteQR?id=${QR_Id}`, {
         method: "POST",
         headers: {
