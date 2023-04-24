@@ -6,10 +6,20 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("qrcodes");
     const { id } = req.query;
+    const { name, description, url } = req.body;
 
-    const qrCode = await db.collection("qrcodes").findOne({
-      _id: new ObjectId(id),
-    });
+    const qrCode = await db.collection("qrcodes").updateOne(
+      {
+        _id: new ObjectId(id),
+      },
+      {
+        $set: {
+          name: name,
+          description: description,
+          url: url,
+        },
+      }
+    );
 
     res.json(qrCode);
   } catch (e) {
