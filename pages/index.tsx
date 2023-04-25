@@ -64,6 +64,10 @@ export default function Home(props: Props) {
     }
   };
 
+  function redirectEditPage(qrCodeId: any) {
+    window.location.href = "/editar?id=" + qrCodeId;
+  }
+
   async function generateQRCodeDataURL(
     url: string,
     fileName: string
@@ -181,7 +185,7 @@ export default function Home(props: Props) {
                         <div className="one wide column"></div>
 
                         {/* Aquí va el nombre del código QR */}
-                        <div className="nine wide column">
+                        <div className="seven wide column">
                           <div className="ui middle aligned mini message">
                             <div className="middle aligned header">
                               <h1>
@@ -192,6 +196,20 @@ export default function Home(props: Props) {
                         </div>
 
                         {/* Botones de la información del código QR*/}
+
+                        {/* Botón de actualizar código QR */}
+                        <div className="two wide column">
+                          <button
+                            className="ui tiny icon button"
+                            onClick={() => redirectEditPage(qrCode._id)}
+                          >
+                            <img
+                              className="ui tiny image"
+                              src="/pencil-icon.png"
+                            />
+                          </button>
+                        </div>
+
 
                         {/* Botón de descargar código QR */}
                         <div className="two wide column">

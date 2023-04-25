@@ -31,9 +31,10 @@ export default function Home() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (name && description && url) {
-
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
       try {
-        let response = await fetch("http://127.0.0.1:3000/api/addQR", {
+        let response = await fetch("http://127.0.01:3000/api/updateQR?id="+id, {
           method: "POST",
           body: JSON.stringify({
             name,
@@ -42,7 +43,7 @@ export default function Home() {
           }),
           headers: {
             Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
         });
         response = await response.json();
@@ -52,10 +53,10 @@ export default function Home() {
         setError("");
         let qrURL = await generateQRCodeDataURL(url);
         setImgSrc(qrURL);
-        setMessage("QR code agregado con éxito. Volviendo a la pagina principal...");
+        setMessage("QR code actualizado con éxito. Volviendo a la pagina principal...");
 
         setTimeout(() => {
-          alert("QR generado con éxito. Se volverá a la página principal.");
+          alert("QR actualizado con éxito. Se volverá a la página principal.");
           window.location.href = "/";
         }, 2000); // Delay de 2 segundos
 
