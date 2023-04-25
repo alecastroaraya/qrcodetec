@@ -185,7 +185,7 @@ export default function Home(props: Props) {
                           <div className="ui middle aligned mini message">
                             <div className="middle aligned header">
                               <h1>
-                                {qrCode.name}: {qrCode.url}:{qrCode._id}
+                                {qrCode.name}: {qrCode.url}
                               </h1>
                             </div>
                           </div>
