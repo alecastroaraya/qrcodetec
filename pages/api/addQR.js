@@ -18,13 +18,11 @@ export default async (req, res) => {
       // envie al usuario a nuestro servidor y no a la pagina de qrcode
 
     // Obtenemos los valores que ingreso el usuario en el formulario
-    const urlDelServidor = "http://localhost:3000/qr/readQR?qrUrl=";
-    let { name, description, url } = req.body;
-    // Creamos el url nuevo para que envie al usuario a nuestro servidor y no a la pagina de qrcode
-    url = urlDelServidor + url;
 
-    /////////////////////////////////////////////////////////////////////////
-
+    let { name, description, urlFinal } = req.body;
+    const url = urlFinal;
+    console.log(urlFinal);
+    console.log(url);
     // Le hacemos INSERT del QR nuevo a la base de datos
     const qrCode = await db.collection("qrcodes").insertOne({
       name,

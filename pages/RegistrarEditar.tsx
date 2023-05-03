@@ -31,14 +31,15 @@ export default function Home() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (name && description && url) {
-
+      const urlDelServidor = "http://127.0.0.1:3000/readQR?qrUrl=";
+      const urlFinal = urlDelServidor + url;
       try {
         let response = await fetch("http://127.0.0.1:3000/api/addQR", {
           method: "POST",
           body: JSON.stringify({
             name,
             description,
-            url,
+            urlFinal,
           }),
           headers: {
             Accept: "application/json, text/plain, */*",
@@ -50,7 +51,9 @@ export default function Home() {
         setDescription("");
         setUrl("");
         setError("");
-        let qrURL = await generateQRCodeDataURL(url);
+        
+
+        let qrURL = await generateQRCodeDataURL(urlFinal);
         setImgSrc(qrURL);
         setMessage("QR code agregado con éxito. Volviendo a la pagina principal...");
 
