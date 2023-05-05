@@ -50,6 +50,11 @@ export default function Home(props: Props) {
 
   const handleDeleteQR = async (QR_Id: string) => {
     try {
+      const confirmed = window.confirm("Seguro que quiere borrar este código QR?");
+      if (!confirmed) {
+        return;
+      }
+      
       let response = await fetch(`/api/deleteQR?id=${QR_Id}`, {
         method: "POST",
         headers: {
@@ -60,7 +65,7 @@ export default function Home(props: Props) {
       response = await response.json();
       window.location.reload();
     } catch (error) {
-      console.log("An error occurred while deleting ", error);
+      console.log("Un error ocurrió al intentar borrar el código QR ", error);
     }
   };
 
