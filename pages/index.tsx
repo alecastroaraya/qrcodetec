@@ -73,6 +73,14 @@ export default function Home(props: Props) {
     window.location.href = "/editar?id=" + qrCodeId;
   }
 
+  function redirectProvinceGraphPage(qrUrl: any) {
+    window.location.href = "/grafico_provincias?qrUrl=" + qrUrl;
+  }
+
+  function redirectCantonGraphPage(qrUrl: any) {
+    window.location.href = "/pag_estadistica_canton?qrUrl=" + qrUrl;
+  }
+
   async function generateQRCodeDataURL(
     url: string,
     fileName: string
@@ -241,12 +249,12 @@ export default function Home(props: Props) {
                               />
                               <div className="menu">
                                 <div className="item">
-                                  <a href="/grafico_provincias">
+                                <a href={`/grafico_provincias?qrUrl=${qrCode.url.split("=")[1]}`}>
                                     <h2>Por provincias</h2>
                                   </a>
                                 </div>
                                 <div className="item">
-                                  <a href="/pag_estadistica_canton">
+                                <a href={`/pag_estadistica_canton?qrUrl=${qrCode.url.split("=")[1]}`}>
                                     <h2>Por cantones</h2>
                                   </a>
                                 </div>

@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/addQR.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/addQR.js", "pages/grafico_provincias.tsx"],
   "exclude": ["node_modules"]
 }

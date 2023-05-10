@@ -14,7 +14,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/semantic-ui": "^2.2.7",
-    "chart.js": "^4.2.1",
+    "chart.js": "^4.3.0",
     "mongodb": "^5.2.0",
     "next": "13.2.4",
     "node": "^19.8.1",

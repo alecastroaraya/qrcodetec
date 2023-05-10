@@ -2,10 +2,27 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { useState } from "react";
+import { useEffect } from "react";
+import ChartComponent from '../components/ProvinciasChartComponent';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [visitasPorProvincia, setVisitasPorProvincia] = useState([]);
+  const apiUrl = "http://127.0.0.1:3000/api/getQRProvinces";
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const qrUrlParam = urlParams.get("qrUrl");
+    const dynamicApiUrl = `${apiUrl}?qrUrl=${qrUrlParam}`;
+
+    fetch(dynamicApiUrl)
+      .then((response) => response.json())
+      .then((data) => setVisitasPorProvincia(data))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       {/* Título del tab de la página */}
@@ -58,31 +75,23 @@ export default function Home() {
 
         {/* Estas filas contienen la información respectiva de cada página, en este caso muestra el gráfico del código QR respectivo */}
         <div className="ui vertically divided bottom aligned grid">
-          <div className="fifteen column row">
+          <div className="sixteen column row">
             <div className="two wide column">
 
             </div>
 
-            <div className="nine wide column">
-              <img src="/grafico_ejemplo.png" />
-              <center><h4>*Seleccione una provincia del gráfico para ver los cantones</h4></center>
+            <div className="one wide column">
+
             </div>
 
 
-            <div className="five wide column">
-              <div className="middle aligned header">
-                <h1>Número total de vistas</h1>
-                <h2>---------------------------------</h2>
-              </div>
-              <button className="ui medium button">
-                <a href="/">
-                  <h3>Regresar</h3>
-                </a>
-              </button>
-              <br />
-              <br />
+            <div className="ten wide column">
+              <center><h1>Gráfico de Provincias por Visitas</h1></center>
+              <ChartComponent data={visitasPorProvincia} />
             </div>
+
           </div>
+          
         </div>
       </div>
     </>
