@@ -1,6 +1,13 @@
 import clientPromise from "../../lib/mongodb";
 import { ObjectId } from "mongodb";
 
+/**
+ * Obtiene un código QR específico de la base de datos por medio de un ID
+ *
+ * @param req El request realizado
+ * @param res La respuesta al request realizado
+ * @return El JSON del código QR que se acaba de obtener
+ */
 export default async (req, res) => {
   try {
     const client = await clientPromise;
