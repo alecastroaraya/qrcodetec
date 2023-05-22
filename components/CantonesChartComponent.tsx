@@ -2,6 +2,12 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, DoughnutController, registerables } from 'chart.js';
 
+/**
+ * Componente de gráficos para cantones de un código QR
+ *
+ * @return El componente de gráfico de cantones
+ */
+
 Chart.register(...registerables);
 
 interface CantonData {

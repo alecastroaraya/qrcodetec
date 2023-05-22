@@ -7,6 +7,14 @@ req es un objeto que contiene información sobre la solicitud HTTP
 res es un objeto que contiene información sobre la respuesta HTTP 
   que se enviará cuando finalice la función.
 */
+
+/**
+ * Agrega un código QR a la base de datos.
+ *
+ * @param req El request realizado
+ * @param res La respuesta al request realizado
+ * @return El JSON del código QR que se acaba de agregar
+ */
 export default async (req, res) => {
   try {
     const client = await clientPromise;
