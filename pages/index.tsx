@@ -253,11 +253,6 @@ export default function Home(props: Props) {
                                     <h2>Por provincias</h2>
                                   </a>
                                 </div>
-                                <div className="item">
-                                <a href={`/pag_estadistica_canton?qrUrl=${qrCode.url.split("=")[1]}`}>
-                                    <h2>Por cantones</h2>
-                                  </a>
-                                </div>
                               </div>
                             </div>
                           </div>
