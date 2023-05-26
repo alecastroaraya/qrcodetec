@@ -2,6 +2,7 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, DoughnutController, registerables } from 'chart.js';
 
+
 Chart.register(...registerables);
 
 interface CantonData {
@@ -9,16 +10,22 @@ interface CantonData {
   visits: number;
 }
 
+
 interface ChartComponentProps {
   data: CantonData[];
+
 }
 
+
+
 const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
+  
   React.useEffect(() => {
     Chart.register(DoughnutController);
   }, []);
 
-  const chartData = {
+  const chartData = { 
+  
     labels: data.map((item) => item.canton),
     datasets: [
       {
@@ -32,6 +39,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
 
   const handleReturnClick = () => {
     window.location.href = "/"; // Navigate to the homepage
+    
   };
 
   return (

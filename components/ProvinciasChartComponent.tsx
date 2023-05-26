@@ -1,19 +1,28 @@
-import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import React, { useState } from 'react';
 import { Chart, DoughnutController, registerables } from 'chart.js';
 
-Chart.register(...registerables);
+
+Chart.register(...registerables );
 
 interface ProvinciaData {
   provincia: string;
   visits: number;
 }
 
+
+
+
 interface ChartComponentProps {
   data: ProvinciaData[];
+  
 }
 
-const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
+
+const ChartComponent1: React.FC<ChartComponentProps> = ({ data }) => {
+
+  
+
   React.useEffect(() => {
     Chart.register(DoughnutController);
   }, []);
@@ -51,6 +60,25 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
     ],
   };
 
+  const enviarDatos = (sele: string) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const qrUrlParam = urlParams.get("qrUrl");
+    const nuevaURL = `/pag_estadistica_canton?qrUrl=${qrUrlParam}&parametro1=${sele} `;
+    window.location.href = nuevaURL;
+  };
+
+
+  const handleClick  = (event: any, elements: any[]) => {
+    if (elements.length > 0) {
+      const clickedElement = elements[0];
+      const index = clickedElement.index;
+      const label = chartData.labels[index];
+      enviarDatos(label);
+    }
+  };
+
+
+
   const totalSum = Object.values(aggregatedData).reduce((sum, visits) => sum + visits, 0);
 
   const handleReturnClick = () => {
@@ -59,7 +87,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
 
   return (
     <div>
-      <center> <Doughnut data={chartData} /> </center>
+      <center> <Doughnut data={chartData} options={{ onClick: handleClick,}} /> </center>
       <br />
       <br />
       <center> <h2>Número total de visitas: {totalSum}</h2> </center>
@@ -72,4 +100,4 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
   );
 };
 
-export default ChartComponent;
+export default ChartComponent1;

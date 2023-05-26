@@ -5,23 +5,51 @@ import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import ChartComponent from '../components/CantonesChartComponent';
+import { Item } from "semantic-ui-react";
+import { elements } from "chart.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [visitasPorCanton, setVisitasPorCanton] = useState([]);
+  const [visitasPorCantonF, setVisitasPorCantonF] = useState([]);
   const apiUrl = "http://127.0.0.1:3000/api/getQRCantones";
+  let parametro1 = '';
+ 
+
+
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const qrUrlParam = urlParams.get("qrUrl");
+    const parametro1FromUrl = urlParams.get("parametro1");
+    if (parametro1FromUrl) {
+      parametro1 = parametro1FromUrl;
+    }
+    console.log("parametro1:", parametro1);
     const dynamicApiUrl = `${apiUrl}?qrUrl=${qrUrlParam}`;
 
-    fetch(dynamicApiUrl)
+
+    
+       fetch(dynamicApiUrl)
       .then((response) => response.json())
-      .then((data) => setVisitasPorCanton(data))
+      .then((data) =>{ setVisitasPorCantonF(data.filter((item : any)=> item.provincia === parametro1))
+        console.log(data.find((item : any)=> item.provincia === parametro1));
+      
+      })
       .catch((error) => console.log(error));
+
+    
+       
+        
   }, []);
+
+
+  const getVisitasPorCanton =() => {
+   const visitasPorCantonFiltrado = visitasPorCantonF.find((item : any)=> item.provincia === parametro1);
+   console.log(visitasPorCantonFiltrado);
+  }
+ 
+
 
   return (
     <>
@@ -87,7 +115,7 @@ export default function Home() {
 
             <div className="ten wide column">
               <center><h1>Gráfico de Cantones por Visitas</h1></center>
-              <ChartComponent data={visitasPorCanton} />
+              <ChartComponent data={visitasPorCantonF} />
             </div>
 
           </div>
