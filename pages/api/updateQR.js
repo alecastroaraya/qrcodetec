@@ -1,6 +1,13 @@
 import clientPromise from "../../lib/mongodb";
 import { ObjectId } from "mongodb";
 
+/**
+ * Actualiza las estadísticas (ubicación y cantidad de visitas) de un código QR que se visitó
+ *
+ * @param req El request realizado
+ * @param res La respuesta al request realizado
+ * @return El JSON del código QR visitado
+ */
 export default async (req, res) => {
   try {
     const client = await clientPromise;

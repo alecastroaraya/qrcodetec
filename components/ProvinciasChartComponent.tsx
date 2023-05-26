@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 import { Chart, DoughnutController, registerables } from 'chart.js';
 
 
-Chart.register(...registerables );
+/**
+ * Componente de gráficos para provincias de un código QR
+ *
+ * @return El componente de gráfico de provincias
+ */
+Chart.register(...registerables);
 
 interface ProvinciaData {
   provincia: string;
