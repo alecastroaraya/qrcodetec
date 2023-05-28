@@ -33,8 +33,12 @@ export default function Home() {
           console.log(data.results[0].address_components);
           console.log(data.results[0].address_components[2].long_name);
           console.log(data.results[0].address_components[1].long_name);
-          const provincia = data.results[0].address_components[2].long_name;
+          let provincia = data.results[0].address_components[2].long_name;
           const canton = data.results[0].address_components[1].long_name;
+          if (provincia.includes("Provincia de")) {
+            provincia = provincia.replace("Provincia de ", "");
+          }
+
           // Obtener el valor del parametro qrUrl de la URL
           const urlParams = new URLSearchParams(window.location.search);
           console.log("\n\n" + urlParams + " \n\n");
