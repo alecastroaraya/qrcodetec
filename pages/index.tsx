@@ -24,12 +24,16 @@ export async function getServerSideProps() {
   try {
     let response = await fetch("http://127.0.0.1:3000/api/getQRs");
     let qrCodes = await response.json();
-
+    console.log(JSON.parse(JSON.stringify(qrCodes)));
+    
     return {
       props: { qrCodes: JSON.parse(JSON.stringify(qrCodes)) },
     };
   } catch (e) {
     console.error(e);
+    return {
+      props: { qrCodes: JSON.parse(JSON.stringify({length : 0})) },
+    };
   }
 }
 
