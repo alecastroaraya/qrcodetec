@@ -43,7 +43,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
   const totalSum = data.reduce((sum, item) => sum + item.visits, 0);
 
   const handleReturnClick = () => {
-    window.location.href = "/"; // Navigate to the homepage
+    window.location.href = "http://127.0.0.1:3000/grafico_provincias?qrUrl=" + qrURL; // Navigate to the homepage
     
   };
 
