@@ -1,0 +1,32 @@
+{
+  "name": "qrcodetec",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@types/node": "18.15.3",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@types/semantic-ui": "^2.2.7",
+    "chart.js": "^4.3.0",
+    "firebase": "^9.22.1",
+    "mongodb": "^5.2.0",
+    "next": "13.2.4",
+    "node": "^19.8.1",
+    "nvm": "^0.0.4",
+    "qrcode": "^1.5.1",
+    "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.11.2",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
+    "typescript": "5.0.2"
+  }
+}
