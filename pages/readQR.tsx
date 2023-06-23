@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState<GeolocationPosition | null>(null);
 
   useEffect(() => {
     const geolocationOptions = {
@@ -59,7 +59,7 @@ export default function Home() {
             },
           });
           // Enviar al usuario al sitio web de google
-          //window.location.href = qrUrl as string;
+          window.location.href = qrUrl as string;
 
         })
         .catch((error) => {

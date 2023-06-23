@@ -15,6 +15,7 @@
     "@types/react-dom": "18.0.11",
     "@types/semantic-ui": "^2.2.7",
     "chart.js": "^4.3.0",
+    "file-loader": "^6.2.0",
     "firebase": "^9.22.1",
     "mongodb": "^5.2.0",
     "next": "13.2.4",
@@ -28,5 +29,10 @@
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "fs-extra": "^11.1.1",
+    "ncp": "^2.0.0"
   }
 }
