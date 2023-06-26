@@ -3,7 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/api/updateQR": "pages/api/updateQR.js",
-  "/editar": "pages/editar.js",
+  "/RegistrarEditar": "pages/RegistrarEditar.js",
   "/api/getQRs": "pages/api/getQRs.js"
 }
