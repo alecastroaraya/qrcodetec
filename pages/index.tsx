@@ -253,7 +253,7 @@ export default function Home(props: Props) {
                               />
                               <div className="menu">
                                 <div className="item">
-                                <a href={`/grafico_provincias?qrUrl=${qrCode.url.split("=")[1]}`}>
+                                <a href={`/grafico_provincias?qrUrl=${qrCode.url ? qrCode.url.split("=")[1] : ""}`}>
                                     <h2>Por provincias</h2>
                                   </a>
                                 </div>

@@ -30,10 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/readQR": [
+    "/editar": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/readQR.js"
+      "static/chunks/pages/editar.js"
     ]
   },
   "ampFirstPages": []
