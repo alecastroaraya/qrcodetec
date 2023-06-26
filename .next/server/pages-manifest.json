@@ -3,5 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/api/getQRs": "pages/api/getQRs.js"
+  "/api/getQRs": "pages/api/getQRs.js",
+  "/readQR": "pages/readQR.js",
+  "/api/readQR": "pages/api/readQR.js"
 }
