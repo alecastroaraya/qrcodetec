@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [visitasPorProvincia, setVisitasPorProvincia] = useState([]);
-  const apiUrl = "http://127.0.0.1:3000/api/getQRProvinces";
+  const apiUrl = "http://localhost:3000/api/getQRProvinces";
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);

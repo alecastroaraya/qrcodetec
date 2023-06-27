@@ -45,7 +45,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
   const handleReturnClick = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const qrUrlParam = urlParams.get("qrUrl");
-    window.location.href = "http://127.0.0.1:3000/grafico_provincias?qrUrl=" + qrUrlParam; // Navigate to the homepage
+    window.location.href = "http://localhost:3000/grafico_provincias?qrUrl=" + qrUrlParam; // Navigate to the homepage
     
   };
 

@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [visitasPorCantonF, setVisitasPorCantonF] = useState([]);
-  const apiUrl = "http://127.0.0.1:3000/api/getQRCantones";
+  const apiUrl = "http://localhost:3000/api/getQRCantones";
   let parametro1 = '';
  
 
