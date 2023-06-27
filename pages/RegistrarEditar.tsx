@@ -31,10 +31,11 @@ export default function Home() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (name && description && url) {
-      const urlDelServidor = "http://localhost:3000/readQR?qrUrl=";
+      const baseUrl = window.location.origin;
+      const urlDelServidor = baseUrl + "/readQR?qrUrl=";
       const urlFinal = urlDelServidor + url;
       try {
-        let response = await fetch("http://localhost:3000/api/addQR", {
+        let response = await fetch(baseUrl + "/api/addQR", {
           method: "POST",
           body: JSON.stringify({
             name,

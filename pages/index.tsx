@@ -20,9 +20,14 @@ type QRCode = {
   url: string;
 };
 
-export async function getServerSideProps() {
-  try {
-    let response = await fetch("http://localhost:3000/api/getQRs");
+export async function getServerSideProps({ req }) {
+  try{
+    const protocol = req.headers['x-forwarded-proto'] || 'http';
+    const host = req.headers['x-forwarded-host'] || req.headers.host;
+    const baseUrl = `${protocol}://${host}`;
+
+    console.log(baseUrl);
+    let response = await fetch( baseUrl + "/api/getQRs");
     let qrCodes = await response.json();
     console.log(JSON.parse(JSON.stringify(qrCodes)));
     

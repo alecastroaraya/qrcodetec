@@ -45,8 +45,8 @@ export default function Home() {
           
           const qrUrl = urlParams.get("qrUrl");
           console.log("\n\n" + qrUrl + " \n\n");
-
-          fetch("http://localhost:3000/api/readQR", {
+          const baseUrl = window.location.origin;
+          fetch( baseUrl + "/api/readQR", {
             method: "POST",
             body: JSON.stringify({
               provincia,

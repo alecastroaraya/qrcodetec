@@ -34,7 +34,8 @@ export default function Home() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
       try {
-        let response = await fetch("http://127.0.01:3000/api/updateQR?id="+id, {
+        const baseUrl = window.location.origin;
+        let response = await fetch( baseUrl + "/api/updateQR?id="+id, {
           method: "POST",
           body: JSON.stringify({
             name,
